@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Demo">
+<html lang="en" ng-app="Demo" ng-controller="Ctrl">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
@@ -8,23 +8,19 @@
 
 <title>WebDemo</title>
 
-<link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/glyphicons.css">
-
 </head>
 <body>
 	<script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/popper.min.js"></script>
-	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/angular.js"></script>
 	<script src="script.js"></script>
 
-	<div id="wrapper" ng-controller="Ctrl"></div>
+	<div id="wrapper" ></div>
 		<!-- Tabelle -->
-		<div class="tab-pane cont" id="student">
+		<div> Test: {{test.name}} </div>
 
-			<table class="table table-striped">
-				<thead class="thead-dark">
+			<table>
+				<thead>
 					<tr>
 						<th scope="col">Vorname</th>
 						<th scope="col">Nachname</th>
@@ -37,7 +33,6 @@
 					</tr>
 				</tbody>
 			</table>
-		</div>
 	</div>
 </body>
 </html>
