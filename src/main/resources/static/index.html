@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Kursverteilung">
+<html lang="en" ng-app="Demo">
 <head>
 <!-- Required meta tags -->
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<title>Kursverteilung</title>
+<title>WebDemo</title>
 
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/glyphicons.css">
 
-<style> #tab-content { margin-top: 1em; } </style>
 </head>
 <body>
 	<script src="assets/js/jquery.min.js"></script>
@@ -20,265 +19,25 @@
 	<script src="assets/js/angular.js"></script>
 	<script src="script.js"></script>
 
-	<div id="wrapper" ng-controller="Ctrl">
+	<div id="wrapper" ng-controller="Ctrl"></div>
+		<!-- Tabelle -->
+		<div class="tab-pane cont" id="student">
 
-		<!-- Navigation Bar -->
-
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">Kursverteilung</a>
-		</nav>
-
-		<div>
-			<ul class="nav nav-tabs">
-				<li class="nav-item">
-					<a class="nav-link active" data-target="#upload" data-toggle="tab">Hochladen</a>
-				</li>
-				<li class="nav-item" >
-					<a ng-class="navOptimization()" data-target="#optimize" data-toggle="tab">Optimieren</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" data-target="#student" data-toggle="tab">Schüler</a></li>
-				<li class="nav-item">
-					<a class="nav-link" data-target="#course" data-toggle="tab">Kurse</a></li>
-				<li class="nav-item">
-					<a class="nav-link" data-target="#sameCourse" data-toggle="tab">Gleiche
-						Kurse</a></li>
-				<li class="nav-item">
-					<a class="nav-link" data-target="#fixedCourse" data-toggle="tab">Feste
-						Kurse</a></li>
-			</ul>
-
-
-			<div class="tab-content" id="tab-content">
-				<!-- Upload -->
-				<div class="tab-pane active cont" id="upload">
-
-
-					<div class="fluid-container">
-						<div class="row">
-
-							<div class="col-md-6">
-								<div class="panel panel-default">
-									<div class="panel panel-heading"><h3>Kurse</h3></div>
-									<div class="panel panel-body">
-										<table class="table">
-											<tr>
-												<td><strong> <input type="file"
-														file-model="param.file.course">
-												</strong></td>
-												<td align="right"><span
-													ng-show="actionUpload.course.success || actionUpload.course.error">
-														hochgeladen am {{ actionUpload.course.date }} {{
-														actionUpload.course.time }} </span></td>
-											</tr>
-										</table>
-										<p>
-										<p>
-											<button type="button"
-												ng-class="uploadButton(actionUpload.course)"
-												ng-click="uploadCourse()">Hochladen</button>
-									</div>
-								</div>
-							</div>
-
-							<div class="col-md-6">
-								<div class="panel panel-default">
-									<div class="panel panel-heading"><h3>Schüler</h3></div>
-									<div class="panel panel-body">
-										<table class="table">
-											<tr>
-												<td><strong> <input type="file"
-														file-model="param.file.student">
-												</strong></td>
-												<td align="right"><span
-													ng-show="actionUpload.student.success || actionUpload.course.error">
-														hochgeladen am {{ actionUpload.student.date }} {{
-														actionUpload.student.time }} </span></td>
-											</tr>
-										</table>
-										<p>
-										<p>
-											<button type="button"
-												ng-class="uploadButton(actionUpload.student)"
-												ng-click="uploadStudent()">Hochladen</button>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<div class="row">
-
-							<div class="col-md-6">
-								<div class="panel panel-default">
-									<div class="panel panel-heading"> <h3>Gleiche Kurse</h3></div>
-									<div class="panel panel-body">
-										Schüler, die den gleichen Kurs besuchen wollen
-										<table class="table">
-											<tr>
-												<td><strong> <input type="file"
-														file-model="param.file.sameCourse">
-												</strong></td>
-												<td align="right"><span
-													ng-show="actionUpload.sameCourse.success || actionUpload.course.error">
-														hochgeladen am {{ actionUpload.sameCourse.date }} {{
-														actionUpload.sameCourse.time }} </span></td>
-											</tr>
-										</table>
-										<p>
-										<p>
-											<button type="button"
-												ng-class="uploadButton(actionUpload.sameCourse)"
-												ng-click="uploadSameCourse()">Hochladen</button>
-									</div>
-								</div>
-							</div>
-							<div class="col-md-6">
-								<div class="panel panel-default">
-									<div class="panel panel-heading"> <h3>Festgelegte Kurse</h3></div>
-									<div class="panel panel-body">
-										Schüler, die einen bestimmten Kurs besuchen sollen
-										<table class="table">
-											<tr>
-												<td><strong> <input type="file"
-														file-model="param.file.fixedCourse">
-												</strong></td>
-												<td align="right"><span
-													ng-show="actionUpload.fixedCourse.success || actionUpload.course.error">
-														hochgeladen am {{ actionUpload.fixedCourse.date }} {{
-														actionUpload.fixedCourse.time }} </span></td>
-											</tr>
-										</table>
-										<p>
-										<p>
-											<button type="button"
-												ng-class="uploadButton(actionUpload.fixedCourse)"
-												ng-click="uploadFixedCourse()">Hochladen</button>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						
-						<div class="row">
-							<div class="col-md-12">
-								<button type="button" diabled="deleteButton()"
-									class="btn btn-info btn-sm btn-block" ng-click="delete()">Daten
-									löschen</button>							
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-				<!-- Optimize -->
-				<div class="tab-pane cont" id="optimize">
-					<button type="button" 
-					        ng-disabled="disableOptimization()"
-							ng-class="optimizeButton()" 
-							ng-click="optimize()">
-						Optimierung durchführen
-					</button>							
-				</div>
-
-				<!-- Student -->
-				<div class="tab-pane cont" id="student">
-
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Schüler</th>
-								<th scope="col">Kurs</th>
-								<th scope="col">Wahl 1</th>
-								<th scope="col">Wahl 2</th>
-								<th scope="col">Wahl 3</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="student in students">
-								<td>{{ student.name }}</td>
-								<td>{{ student.course }}</td>
-								<td>{{ student.course1 }}</td>
-								<td>{{ student.course2 }}</td>
-								<td>{{ student.course3 }}</td>
-							</tr>
-						</tbody>
-					</table>
-
-				</div>
-
-				<!-- Course -->
-				<div class="tab-pane cont" id="course">
-
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Kurs</th>
-								<th scope="col">Kapazität</th>
-								<th scope="col">gebucht</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="course in courses">
-								<td>{{ course.name }}</td>
-								<td>{{ course.capacity }}</td>
-								<td>{{ course.booked }}</td>
-							</tr>
-						</tbody>
-					</table>
-
-				</div>
-
-				<!-- Same Course -->
-				<div class="tab-pane cont" id="sameCourse">
-
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Student 1</th>
-								<th scope="col">Student 2</th>
-								<th scope="col">Gebuchter Kurs 1</th>
-								<th scope="col">Gebuchter Kurs 2</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="same in sameCourses">
-								<td>{{ same.student1 }}</td>
-								<td>{{ same.student2 }}</td>
-								<td>{{ same.course1 }}</td>
-								<td>{{ same.course2 }}</td>
-							</tr>
-						</tbody>
-					</table>
-
-				</div>
-
-				<!-- Fixed Course -->
-				<div class="tab-pane cont" id="fixedCourse">
-
-					<table class="table table-striped">
-						<thead class="thead-dark">
-							<tr>
-								<th scope="col">Student</th>
-								<th scope="col">Kurs</th>
-								<th scope="col">Gebuchter Kurs</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="fixed in fixedCourses">
-								<td>{{ fixed.student }}</td>
-								<td>{{ fixed.course }}</td>
-								<td>{{ fixed.bookedCourse }}</td>
-							</tr>
-						</tbody>
-					</table>
-
-				</div>
-
-			</div>
-
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th scope="col">Vorname</th>
+						<th scope="col">Nachname</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="person in personen">
+						<td>{{ person.vorname }}</td>
+						<td>{{ person.nachname }}</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
-
 	</div>
 </body>
 </html>
