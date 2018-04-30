@@ -15,7 +15,7 @@ public class DemoController {
     
     @PostMapping("/test/{name}")
     public void post(@PathVariable String name) {
-        System.out.println("POST Hello " + name);
+        System.out.println("POST Hello " + name); 
     }
 
 }
